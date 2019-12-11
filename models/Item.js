@@ -27,7 +27,7 @@ const Item=mongoose.model(
 
 const getAll = ()=>{
     return new Promise((success,fail)=>{
-        Item.find({},(err,items)=>{
+        Item.find({date:-1},(err,items)=>{
             if(err){
                 return fail(err)
             }
@@ -35,7 +35,19 @@ const getAll = ()=>{
         })
     })
 }
+const save=(items)=>{
+    return new Promise((success,fail)=>{
+        var i=new Item(items)
+        i.save(items,err=>{
+            if(err){
+                return fail(err)
+            }
+            return success()
+        })
+    })
+}
 
 module.exports={
-    getAll
+    getAll,
+    save
 }
