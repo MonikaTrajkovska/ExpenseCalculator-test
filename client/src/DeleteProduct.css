@@ -1,0 +1,83 @@
+body {
+    /* general styles */
+    padding: 30px;
+    font-family: 'Open Sans', sans-serif;
+    Background: rgba(0, 0, 0, 0.59);
+    
+}
+
+.modal6 {
+    /* some styles to position the modal at the center of the page */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 440px;
+    border-radius:10px;
+   
+    height: 225px;
+    margin-left: -150px;
+    margin-top: -100px;
+   
+    text-align: center;
+    Background: #fff;
+    Padding: 40px;
+    /* needed styles for the overlay */
+    z-index: 10; /* keep on top of other elements on the page */
+    outline: rgba(0, 0, 0, 0.59);
+   
+   
+}
+
+
+
+h3,p {
+    Font-size: 22px;
+    Color: #575757;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    font-weight: 15px;
+    
+}
+.alert-btn6{
+    display: flex;
+    justify-content: flex-end;
+    
+   
+    
+}
+.cancel-btn6{
+Font-size: 15px;
+color: #576574;
+Background: Transparent;
+Border: 2px solid;
+Border-color: #576574;
+height: 45px;
+ min-width: 30px;
+text-transform: uppercase;
+ padding: 0px 25px;
+border-radius: 5px;
+font-weight: 700;
+margin-top: 50px;
+cursor: pointer;
+
+}
+
+.delete-btn6{
+ Font-size: 15px;
+ color:white;
+Background: #576574;
+Box-shadow: 0px 0px 16px
+rgba(0, 0, 0, 0.17);
+height: 45px;
+ min-width: 30px;
+ text-transform: uppercase;
+padding: 0px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-right: 20px;
+    cursor: pointer;
+ 
+  
+}

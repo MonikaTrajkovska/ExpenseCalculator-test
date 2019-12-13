@@ -25,7 +25,7 @@ api.get("/api/v1/items", items.getAll); //v1 e version 1 a dokolku sakame druga 
   api.post("/api/v1/items", items.save);
 // //  api.put("/api/v1/filmovi/:id", filmovi.replace);
 // //  api.patch("/api/v1/filmovi/:id", filmovi.update);
-//  api.delete("/api/v1/items/:id", items.remove);
+  api.delete("/api/v1/items/:id", items.remove);
 
 api.listen(8080, err => {
   if (err) {

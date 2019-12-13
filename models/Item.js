@@ -27,7 +27,7 @@ const Item=mongoose.model(
 
 const getAll = ()=>{
     return new Promise((success,fail)=>{
-        Item.find({date:-1},(err,items)=>{
+        Item.find({purchase_date:-1},(err,items)=>{
             if(err){
                 return fail(err)
             }
@@ -46,8 +46,19 @@ const save=(items)=>{
         })
     })
 }
+const remove = (id) => {
+    return new Promise((success, fail) => {
+        Item.deleteOne({ _id: id }, err => {  
+            if (err) {
+                return fail(err);
+            }
+            return success();
+        });
+    });
+}
 
 module.exports={
     getAll,
-    save
+    save,
+    remove
 }

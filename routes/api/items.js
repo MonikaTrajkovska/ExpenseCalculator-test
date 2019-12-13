@@ -6,7 +6,7 @@ const Item=require('../../models/Item')
 const getAll=(req,res)=>{
     Item.getAll()
     .then(items=>{
-        res.status(200).send(data)
+        res.status(200).send(items)
     })
     .catch(err=>{
         res.status(500).send(err)
@@ -35,9 +35,18 @@ const save = (req, res) => {
     }
 }
 
-
+const remove = (req, res) => {
+    Item.remove(req.params.id)
+        .then(() => {
+            res.status(204).send();
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
+}
 
 module.exports={
     getAll,
-    save
+    save,
+    remove
 }
