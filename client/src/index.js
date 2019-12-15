@@ -1,46 +1,47 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
-import Register from './Register'
-import Login from './Login'
-import NewProduct from './NewProduct'
-import Header from './Header'
-import Expenses from './Expenses'
-import Products from './Products'
+import Register from './components/Register'
+import Login from './components/Login'
+import NewProduct from './components/NewProduct'
+import Header from './components/Header'
+import Expenses from './components/Expenses'
+import Products from './components/Products'
+import AppNavBar from './components/AppNavBar'
 // import DeleteProduct from './DeleteProduct'
 
 
  import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
 
 const app= document.getElementById('app')
-const Menu =() => {
-     return (
-        <ul>
-            <li>
-                <Link to= '/'>Login</Link>
-            </li>
-             <li>
-                 <Link to='/newproduct'>NewProduct</Link>
-             </li>
-             <li>
-                 <Link to='/expenses'>header</Link>
-             </li>
-             <li>
-                 <Link to= '/register'>Register</Link>
-             </li>
-             <li>
-                 <Link to= '/products'>Products</Link>
-             </li>
-             {/* <li>
-                 <Link to= '/deleteproduct'>Delete Product</Link>
-             </li> */}
-         </ul>
-     )
- }
+// const Menu =() => {
+//      return (
+//         <ul>
+//             <li>
+//                 <Link to= '/'>Login</Link>
+//             </li>
+//              <li>
+//                  <Link to='/newproduct'>NewProduct</Link>
+//              </li>
+//              <li>
+//                  <Link to='/expenses'>header</Link>
+//              </li>
+//              <li>
+//                  <Link to= '/register'>Register</Link>
+//              </li>
+//              <li>
+//                  <Link to= '/products'>Products</Link>
+//              </li>
+//              {/* <li>
+//                  <Link to= '/deleteproduct'>Delete Product</Link>
+//              </li> */}
+//          </ul>
+//      )
+//  }
 
 const Routes = () => {
     return (
 <Router>
- <Menu/> 
+ <AppNavBar/> 
 <Switch>
  <Route exact  path= '/' component={Login} />
 <Route  exact path='/Register' component={Register}/>

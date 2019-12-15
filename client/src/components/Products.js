@@ -1,8 +1,104 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import './Products.css'
 
-const Products = ()=> {
+import './Products.css'
+import uuid from 'uuid'
+
+class Products extends React.Component{
+  constructor(){
+    super()
+  this.state={
+    items:[
+      {id:uuid(), 
+    product_name:"Coca cola",
+    product_type:"Drink",
+    prodduct_descrition:"Unhealthy",
+    purchase_date:"12.08.2019",
+    product_price:"75"
+   },
+   {id:uuid(), 
+    product_name:"Fanta",
+    product_type:"Drink",
+    product_descrition:"Unhealthy",
+    purchase_date:"10.08.2018",
+    product_price:"60"
+   },
+    ]
+  }}
+  render(){
+
+    const {items}=this.state;
+    return(
+      <React.Fragment>
+      <div className="main-div5">
+<h3>Products</h3>
+<label>Filter by: 
+<select id="filter5">
+<option>Year</option>
+<option>Highest Price</option>
+<option>Lowest Price</option>
+<option>Latest Purchases</option>
+</select>
+</label>
+</div>
+  
+<tr >
+   <th>Product name</th>
+   <th>Product type</th>
+   <th>Product description</th>
+   <th>Purchase date</th>
+   <th>Product price </th>
+   <th></th>
+   <th></th>
+ </tr>
+
+{items.map(( {id, product_name,product_type,product_descrition,purchase_date,product_price})=>(
+   <table className="data5">
+  <tbody >
+ 
+ <tr key={items.uuid}>
+
+ <td>{items.product_name}</td>
+ <td>{items.product_type}</td>
+ <td>{items.product_descrition}</td>
+<td>{items.purchase_date}</td>
+<td>{items.product_price}</td>
+<td>
+                 <a href=""><i className="far fa-edit"></i></a>
+                 <a href=""><i className="far fa-trash-alt"></i></a>
+             </td>
+       </tr>
+       </tbody>
+
+  </table>
+
+
+      )
+)
+}
+   
+        <button className="fixed-button5"
+        onClick={()=>{
+          const item=prompt("EnterItem")
+        if(item){
+          this.setState(state=>({
+            items:[...state.items,{id:uuid(),product_name,product_type,product_descrition,purchase_date,product_price}]
+          }))
+        }
+        }}
+        >New product</button>
+        
+       
+  </React.Fragment>
+      
+    )
+} 
+  
+}
+
+export default Products
+
+{/* const Products = ()=> {
     return (
         <React.Fragment>
             <div className="main-div5">
@@ -160,4 +256,4 @@ const Products = ()=> {
         </React.Fragment>
     )
 }
-export default Products
+export default Products */}
