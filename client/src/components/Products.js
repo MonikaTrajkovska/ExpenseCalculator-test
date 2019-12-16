@@ -54,24 +54,30 @@ class Products extends React.Component{
             <th></th>
             <th></th>
           </tr>
-    {items.map(({_id , product_name, product_type,product_descrition,purchase_date,product_price}) =>(  
+    {items.map(({id , product_name, product_type,product_descrition,purchase_date,product_price}) =>(  
        
-    <tr key={_id} >
+    <tr key={id} >
     <td>{product_name}</td>
     <td>{product_type}</td>
     <td>{product_descrition}</td>
    <td>{purchase_date}</td>
    <td>{product_price}</td>
    <td>
-                    <a href=""><i className="far fa-edit"></i></a>
-                    <a href=""><i className="far fa-trash-alt"></i></a>
+                    {/* <a href=""><i className="far fa-edit"></i></a> */}
+                    <button onClick={() => {
+                    this.setState(state=>
+                    ({ items:state.items.filter (item=> item.id !== id)
+                      
+      }))
+                     } }
+    
+    >Delete</button>
+         
                 </td>
           </tr>
     ))}
           </thead>
-          
-   
-     </table>
+         </table>
   
     
     
