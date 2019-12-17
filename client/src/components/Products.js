@@ -1,32 +1,18 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-
+import {connect } from 'react-redux'
 import './Products.css'
 import uuid from 'uuid'
+import {getItems} from '../actions/itemActions'
+import PropTypes from 'prop-types'
 
 class Products extends React.Component{
-  constructor(props){
-    super()
-  this.state={
-    items:[
-      {id:uuid(), 
-    product_name:"Coca cola",
-    product_type:"Drink",
-    product_descrition:"Unhealthy",
-    purchase_date:"12.08.2019",
-    product_price:"75"
-   },
-   {id:uuid(), 
-    product_name:"Fanta",
-    product_type:"Drink",
-    product_descrition:"Unhealthy",
-    purchase_date:"10.08.2018",
-    product_price:"60"
-   },
-    ]
-  }}
+  componentDidMount(){
+    this.props.getItems()
+  }
+
   render(){
-  const {items}=this.state
+  const {items}=this.props.item
   
   return(
     
@@ -100,8 +86,15 @@ class Products extends React.Component{
     } 
 }
 
+Products.propTypes={
+  getItems:PropTypes.func.isRequired,
+   item:PropTypes.object.isRequired
+}
+const mapStateToProps=(state)=>({
+  item:state.item
+})
 
-export default Products
+export default connect(mapStateToProps,{getItems})(Products)
 
 
 {/* const Products = ()=> {

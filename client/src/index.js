@@ -8,6 +8,8 @@ import Expenses from './components/Expenses'
 import Products from './components/Products'
 import AppNavBar from './components/AppNavBar'
 // import DeleteProduct from './DeleteProduct'
+import {Provider} from 'react-redux'
+import store from './store'
 
 
  import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
@@ -85,4 +87,9 @@ const Routes = () => {
     )
 }
 
-ReactDOM.render(<Routes/>, app)
+ReactDOM.render(
+    <Provider store={store}>
+      <Routes />
+    </Provider>,
+    app
+  );
