@@ -21,7 +21,7 @@ module: {
         {
             test: /\.(js|jsx)$/,
             exclude: /node_modules/,
-            use: ["babel-loader","source-map-loader"]
+            use: ["babel-loader","source-map-loader",]
          },
           
          {
