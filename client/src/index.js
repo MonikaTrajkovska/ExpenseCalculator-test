@@ -12,6 +12,7 @@ import {Provider} from 'react-redux'
 import store from './store'
 
 
+
  import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
 
 const app= document.getElementById('app')
@@ -47,8 +48,8 @@ const Routes = () => {
 <Switch>
  <Route exact  path= '/' component={Login} />
 <Route  exact path='/Register' component={Register}/>
-  {/* <Route exact  path='/newproduct' component={NewProduct}/> 
-  <Route exact  path='/header' component={Header}/>   */}
+   {/* <Route exact  path='/newproduct' component={NewProduct}/>  */}
+  {/* <Route exact  path='/header' component={Header}/>   */} */}
   <Route exact path="/newproduct" render={() => 
                     <React.Fragment>
                         <Header/>

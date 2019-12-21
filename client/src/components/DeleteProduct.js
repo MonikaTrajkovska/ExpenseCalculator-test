@@ -1,6 +1,6 @@
  import React from 'react'
  import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
- import './DeleteProduct.css'
+//  import './DeleteProduct.css'
  import { connect } from 'react-redux';
 import { deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
