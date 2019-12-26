@@ -27,7 +27,7 @@ const Item=mongoose.model(
 
 const getAll = ()=>{
     return new Promise((success,fail)=>{
-        Item.find({purchase_date:-1},(err,items)=>{
+        Item.find({},(err,items)=>{
             if(err){
                 return fail(err)
             }

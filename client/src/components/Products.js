@@ -69,9 +69,9 @@ class Products extends React.Component{
             <th></th>
             <th></th>
           </tr>
-    {items.map(({id , product_name, product_type,product_description,purchase_date,product_price}) =>(  
+    {items.map(({_id , product_name, product_type,product_description,purchase_date,product_price}) =>(  
        
-    <tr key={id} >
+    <tr key={_id} >
     <td>{product_name}</td>
     <td>{product_type}</td>
     <td>{product_description}</td>
