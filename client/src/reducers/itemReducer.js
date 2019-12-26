@@ -7,14 +7,14 @@ const initialState={
         {id:uuid(), 
       product_name:"Coca cola",
       product_type:"Drink",
-      product_descrition:"Unhealthy",
+      product_description:"Unhealthy",
       purchase_date:"12.08.2019",
       product_price:"75"
      },
      {id:uuid(), 
       product_name:"Fanta",
       product_type:"Drink",
-      product_descrition:"Unhealthy",
+      product_description:"Unhealthy",
       purchase_date:"10.08.2018",
       product_price:"60"
      },
@@ -26,6 +26,16 @@ switch(action.type){
         return{
             ...state
         }
+        case  "DELETE_ITEM":
+return{
+    ...state,
+    items:state.items.filter(item => item.id !== action.payload)
+}
+case "ADD_ITEM":
+    return{
+        ...state,
+        items:[action.payload,...state.items]
+    }
         default:
             return state
 }

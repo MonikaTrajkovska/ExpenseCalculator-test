@@ -2,22 +2,50 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import {connect } from 'react-redux'
 import './Products.css'
-import uuid from 'uuid'
-import {getItems} from '../actions/itemActions'
+// import uuid from 'uuid'
+import {getItems, deleteItem} from '../actions/itemActions'
 import PropTypes from 'prop-types'
+// import './DeleteProduct.css'
 
 class Products extends React.Component{
+  constructor() {
+    super();
+    this.state = {
+      showModal: null
+    };
+  }
+
   componentDidMount(){
     this.props.getItems()
   }
 
+  deleteItems=(id)=>{
+    this.setState({
+      showModal:(
+        <React.Fragment>
+<h3>Delete Product</h3>
+        <p>You are about to delete this product.Are you sure you wish to continue?</p>
+<div className="alert-btn6">
+            <button className="cancel-btn6" onClick={() => this.setState({ showModal: null })} >Cancel</button>
+            <button className="delete-btn6" onClick={() => this.props.deleteItem(id)}>Delete</button>
+        </div>
+
+    </React.Fragment>
+      )
+    })
+  }
+ 
+                    
+      
   render(){
   const {items}=this.props.item
   
   return(
-    
-    <React.Fragment>
+
+     <React.Fragment>
+
     <div className="main-div5">
+
     <h3>Products</h3>
 <label>Filter by: 
 <select id="filter5">
@@ -28,8 +56,9 @@ class Products extends React.Component{
 </select>
 </label>
 </div>
+{this.state.showModal}
     <table className="data5">
-   
+  
     <thead>
     <tr>
             <th>Product name</th>
@@ -40,33 +69,29 @@ class Products extends React.Component{
             <th></th>
             <th></th>
           </tr>
-    {items.map(({id , product_name, product_type,product_descrition,purchase_date,product_price}) =>(  
+    {items.map(({id , product_name, product_type,product_description,purchase_date,product_price}) =>(  
        
     <tr key={id} >
     <td>{product_name}</td>
     <td>{product_type}</td>
-    <td>{product_descrition}</td>
+    <td>{product_description}</td>
    <td>{purchase_date}</td>
    <td>{product_price}</td>
    <td>
                     {/* <a href=""><i className="far fa-edit"></i></a> */}
-                    <button onClick={() => {
-                    this.setState(state=>
-                    ({ items:state.items.filter (item=> item.id !== id)
-                      
-      }))
-                     } }
-    
-    >Delete</button>
+                    <button onClick={() => this.deleteItems(id)} >Delete</button> 
+                    
          
                 </td>
           </tr>
     ))}
           </thead>
          </table>
-  
+<Link to="/newproduct">
+    <button className="fixed-button5" onClick={this.toggle}>New Product</button>
+    </Link>
     
-    
+{/*     
         <button className="fixed-button5"
         onClick={()=>{
           const item=prompt("EnterItem")
@@ -76,7 +101,7 @@ class Products extends React.Component{
           }))
         }
         }}
-        >New product</button>
+        >New product</button> */}
         
        
   </React.Fragment>
@@ -94,7 +119,7 @@ const mapStateToProps=(state)=>({
   item:state.item
 })
 
-export default connect(mapStateToProps,{getItems})(Products)
+export default connect(mapStateToProps,{getItems,deleteItem})(Products)
 
 
 {/* const Products = ()=> {
