@@ -3,7 +3,7 @@ import React from 'react'
 import './New product.css'
 import {connect} from 'react-redux'
 import {addItem} from '../actions/itemActions'
-import uuid from 'uuid'
+// import uuid from 'uuid'
 import {Link} from 'react-router-dom'
 
 class NewProduct extends React.Component{
@@ -25,11 +25,11 @@ toggle = () => {
     });
   };
   
-    onChange = e => {     this.setState({ [e.target.id]: e.target.value });   };
+    onChange = e => {     this.setState({ [e.target._id]: e.target.value });   };
     onSubmit=e=>{
         e.preventDefault()
         const newItem={
-            id:uuid(),
+            
             product_name:this.state.product_name,
             product_type:this.state.product_type,
         product_description:this.state.product_description,

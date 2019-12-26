@@ -19,7 +19,7 @@ class Products extends React.Component{
     this.props.getItems()
   }
 
-  deleteItems=(id)=>{
+  deleteItems=(_id)=>{
     this.setState({
       showModal:(
         <React.Fragment>
@@ -27,7 +27,7 @@ class Products extends React.Component{
         <p>You are about to delete this product.Are you sure you wish to continue?</p>
 <div className="alert-btn6">
             <button className="cancel-btn6" onClick={() => this.setState({ showModal: null })} >Cancel</button>
-            <button className="delete-btn6" onClick={() => this.props.deleteItem(id)}>Delete</button>
+            <button className="delete-btn6" onClick={() => this.props.deleteItem(_id)}>Delete</button>
         </div>
 
     </React.Fragment>
@@ -79,7 +79,7 @@ class Products extends React.Component{
    <td>{product_price}</td>
    <td>
                     {/* <a href=""><i className="far fa-edit"></i></a> */}
-                    <button onClick={() => this.deleteItems(id)} >Delete</button> 
+                    <button onClick={() => this.deleteItems(_id)} >Delete</button> 
                     
          
                 </td>
