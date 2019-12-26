@@ -15,7 +15,7 @@ export const getItems=() => dispatch =>{
 
 export const addItem=(item) => dispatch =>{
    axios
-   .post('/api/v1/items',item)
+   .post("http://localhost:8080/api/v1/items",item)
    .then(res => 
     dispatch({
         
@@ -27,7 +27,7 @@ export const addItem=(item) => dispatch =>{
     )
 }
 export const deleteItem=(id) =>dispatch =>{
-   axios.delete (`/api/items/${id}`).then(res=>{
+   axios.delete (`http://localhost:8080/api/v1/items${id}`).then(res=>{
        dispatch({
         
             type:"DELETE_ITEM",
