@@ -6,7 +6,8 @@ const init = config => {
   mongoose
     .connect(parseCString(config), {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex:true
     })
     .then(res => {
       // console.log(res);
