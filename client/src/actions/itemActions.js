@@ -1,4 +1,5 @@
 import axios from 'axios'
+ 
 
 export const getItems=() => dispatch =>{
    dispatch(setItemsLoading())
@@ -13,9 +14,9 @@ export const getItems=() => dispatch =>{
 }
 
 
-export const addItem=(item) => dispatch =>{
+export const addItem=(item) =>( dispatch,getState)=>{
    axios
-   .post("http://localhost:8080/api/v1/items",item)
+   .post("http://localhost:8080/api/v1/items",item )
    .then(res => 
     dispatch({
         

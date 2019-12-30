@@ -1,16 +1,33 @@
 
 const express = require("express");
 const bodyParser = require("body-parser"); 
-const config = require("./config/index.js");
-const DBconn = require("./db/connection"); 
+// const config = require("./config/index.js");
+// const DBconn = require("./db/connection"); 
+const mongoose = require('mongoose');
 const items=require('./routes/api/items')
 const cors = require('cors');
 const users = require("./routes/api/users")
-
-var c = config.getConfig("db");
+// const jwt = require('express-jwt');
+const config=require('config')
+// const auth=require('../../middleware/auth')
+const auth= require("./routes/api/auth")
+// var c = config.getConfig("db");
 // console.log(c);
+// const db = config.get('mongoURI');
+// DBconn.init(config.getConfig("db"));+
+//  const db=config.get('jwt')
 
-DBconn.init(c); 
+const db=config.get('mongoURI')
+
+mongoose
+  .connect(db, { 
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }) // Adding new mongo url parser
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
+
 const api = express(); 
 
 
@@ -24,12 +41,14 @@ api.use(cors());
      res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
      next();
  }); 
-// api.use(
+//   api.use(
 //   jwt(
-//       {secret: config.getConfig('jwt').key}
+//        {secret: config.getConfig('jwt').key}
 //   )
-// // );
+//  );
  api.use('/api/users', require('./routes/api/users'));
+ api.use('/api/auth',require('./routes/api/auth'))
+
 api.get("/api/v1/items", items.getAll); //v1 e version 1 a dokolku sakame druga verzija go pravime v2 itn
 //  api.get("/api/v1/items/:id", items.getOne);
   api.post("/api/v1/items", items.save);
